@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="config"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="/usr/share/java/junit4.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/jemmy-2.2.7.5/jemmy-2.2.7.5.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2-samples.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2-sources.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2-tests.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/original-easymock-4.0.2.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/original-easymock-4.0.2-sources.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/mockito-2.23.4/objenesis-2.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

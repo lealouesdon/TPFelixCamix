@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Camix_Java-v0.4/src"/>
+	<classpathentry kind="src" path="Camix_Java-v0.4/test"/>
+	<classpathentry kind="src" path="Felix/src"/>
+	<classpathentry kind="src" path="Felix/test"/>
+	<classpathentry kind="output" path="Camix_Java-v0.4/bin"/>
+</classpath>
