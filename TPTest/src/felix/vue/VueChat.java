@@ -179,6 +179,10 @@ public class VueChat extends VueFelix implements ActionListener, Runnable
 	public void actionPerformed(ActionEvent ev)
 	{
 		final String message = ev.getActionCommand();
+		
+		if(message.equals("/q")) {
+			this.ferme();
+		}
 
 		try {
 			// Envoi du message au chat.

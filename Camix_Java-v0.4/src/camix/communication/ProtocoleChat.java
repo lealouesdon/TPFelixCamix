@@ -58,6 +58,11 @@ public final class ProtocoleChat
 	 * Commande d'affichage de l'aide sur les commandes disponibles.
 	 */
 	public static final char COMMANDE_AFFICHE_AIDE = 'h';
+	
+	/**
+	 * Commande d'affichage de l'aide sur les commandes disponibles.
+	 */
+	public static final char COMMANDE_FERME_CHAT = 'q';
 
 	/**
 	 * Message à transmettre dans le chat de la part d'un client.
@@ -239,7 +244,10 @@ public final class ProtocoleChat
 			+ ProtocoleChat.COMMANDE_AFFICHE_CLIENT + " : afficher ses informations ;%n"
 			
 			+ ProtocoleChat.ESPACE_MESSAGE_AIDE + ProtocoleChat.COMMANDE_CARACTERE
-			+ ProtocoleChat.COMMANDE_AFFICHE_AIDE + " : afficher l'aide .%n";
+			+ ProtocoleChat.COMMANDE_AFFICHE_AIDE + " : afficher l'aide .%n"
+	
+			+ ProtocoleChat.ESPACE_MESSAGE_AIDE + ProtocoleChat.COMMANDE_CARACTERE
+			+ ProtocoleChat.COMMANDE_FERME_CHAT + " : Sortir du chat .%n";
 
 	
 	/**
