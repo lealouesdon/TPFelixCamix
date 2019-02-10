@@ -71,6 +71,8 @@ public class ControleurFelix
 		}
 	}
 	
+	
+	
 	/**
 	 * Bascule de la vue connexion à la vue chat.
 	 */
@@ -80,6 +82,16 @@ public class ControleurFelix
 		this.vueConnexion.ferme();
 		this.vueChat.affiche();
 		this.vueChat.active();
+	}
+	
+	/**
+	 * Bascule de la vue chat à la vue connexion.
+	 */
+	public void basculeVueConnexion()
+	{
+		this.vueConnexion = new VueConnexion(this);
+		this.vueChat.ferme();
+		this.vueConnexion.affiche();
 	}
 	
 	
