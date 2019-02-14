@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="config"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="jmeter/src"/>
 	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2.jar"/>
 	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2-javadoc.jar"/>
 	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/easymock-4.0.2/easymock-4.0.2-samples.jar"/>
@@ -17,5 +18,7 @@
 	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/mockito-2.23.4/mockito-core-2.23.4.jar"/>
 	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/EasyMock_Mockito_Jemmy2_jar_files/mockito-2.23.4/objenesis-2.6.jar"/>
 	<classpathentry kind="lib" path="/usr/share/java/junit4.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/apache-jmeter-5.0/lib/ext/ApacheJMeter_core.jar"/>
+	<classpathentry kind="lib" path="/home/lea/eclipse-workspace/TEST/apache-jmeter-5.0/lib/ext/ApacheJMeter_tcp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
