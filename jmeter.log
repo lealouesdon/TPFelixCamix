@@ -1,0 +1,199 @@
+2019-01-30 17:13:51,534 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2019-01-30 17:13:51,558 INFO o.a.j.JMeter: Loading user properties from: /home/lea/eclipse-workspace/TEST/apache-jmeter-5.0/bin/user.properties
+2019-01-30 17:13:51,559 INFO o.a.j.JMeter: Loading system properties from: /home/lea/eclipse-workspace/TEST/apache-jmeter-5.0/bin/system.properties
+2019-01-30 17:13:51,564 INFO o.a.j.JMeter: Copyright (c) 1998-2018 The Apache Software Foundation
+2019-01-30 17:13:51,564 INFO o.a.j.JMeter: Version 5.0 r1840935
+2019-01-30 17:13:51,564 INFO o.a.j.JMeter: java.version=10.0.2
+2019-01-30 17:13:51,565 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2019-01-30 17:13:51,565 INFO o.a.j.JMeter: os.name=Linux
+2019-01-30 17:13:51,565 INFO o.a.j.JMeter: os.arch=amd64
+2019-01-30 17:13:51,565 INFO o.a.j.JMeter: os.version=4.15.0-43-generic
+2019-01-30 17:13:51,565 INFO o.a.j.JMeter: file.encoding=UTF-8
+2019-01-30 17:13:51,565 INFO o.a.j.JMeter: Max memory     =1073741824
+2019-01-30 17:13:51,565 INFO o.a.j.JMeter: Available Processors =8
+2019-01-30 17:13:51,573 INFO o.a.j.JMeter: Default Locale=English (EN)
+2019-01-30 17:13:51,573 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2019-01-30 17:13:51,574 INFO o.a.j.JMeter: JMeterHome=/home/lea/eclipse-workspace/TEST/apache-jmeter-5.0
+2019-01-30 17:13:51,574 INFO o.a.j.JMeter: user.dir  =/home/lea/eclipse-workspace/TEST/Camix_Java-v0.4
+2019-01-30 17:13:51,574 INFO o.a.j.JMeter: PWD       =/home/lea/eclipse-workspace/TEST/Camix_Java-v0.4
+2019-01-30 17:13:51,584 INFO o.a.j.JMeter: IP: 172.20.75.51 Name: leas-computer FullName: leas-computer.eduroam.emn.fr
+2019-01-30 17:13:51,938 INFO o.a.j.g.a.LookAndFeelCommand: Installing Darcula LAF
+2019-01-30 17:13:51,976 INFO o.a.j.g.a.LookAndFeelCommand: Using look and feel: com.sun.java.swing.plaf.gtk.GTKLookAndFeel [Darcula]
+2019-01-30 17:13:51,976 INFO o.a.j.JMeter: Setting LAF to: com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+2019-01-30 17:13:52,161 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2019-01-30 17:13:52,661 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2019-01-30 17:13:52,662 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2019-01-30 17:13:54,360 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-01-30 17:13:54,360 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-01-30 17:13:54,360 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-01-30 17:13:54,361 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-01-30 17:13:54,361 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2019-01-30 17:13:54,361 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2019-01-30 17:13:55,068 INFO o.a.j.e.KeyToolUtils: keytool found at 'keytool'
+2019-01-30 17:13:55,069 INFO o.a.j.p.h.p.ProxyControl: HTTP(S) Test Script Recorder SSL Proxy will use keys that support embedded 3rd party resources in file /home/lea/eclipse-workspace/TEST/apache-jmeter-5.0/bin/proxyserver.jks
+2019-01-30 17:13:55,283 INFO o.a.j.s.FileServer: Default base='/home/lea/eclipse-workspace/TEST/Camix_Java-v0.4'
+2019-01-30 17:13:56,245 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2019-01-30 17:13:56,246 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2019-01-30 17:13:56,246 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2019-01-30 17:13:56,246 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2019-01-30 17:13:56,268 WARN o.a.j.v.ViewResultsFullVisualizer: Error loading result renderer: org.apache.jmeter.visualizers.RenderInBrowser
+java.lang.NoClassDefFoundError: javafx/embed/swing/JFXPanel
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Class.java:291) ~[?:?]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createComboRender(ViewResultsFullVisualizer.java:462) [ApacheJMeter_components.jar:5.0 r1840935]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createLeftPanel(ViewResultsFullVisualizer.java:430) [ApacheJMeter_components.jar:5.0 r1840935]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.init(ViewResultsFullVisualizer.java:342) [ApacheJMeter_components.jar:5.0 r1840935]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.<init>(ViewResultsFullVisualizer.java:147) [ApacheJMeter_components.jar:5.0 r1840935]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:488) ~[?:?]
+	at java.lang.Class.newInstance(Class.java:560) [?:?]
+	at org.apache.jmeter.gui.util.MenuFactory.getGUIComponent(MenuFactory.java:174) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.util.MenuFactory.initializeMenus(MenuFactory.java:141) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.util.MenuFactory.<clinit>(MenuFactory.java:106) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.control.gui.TestPlanGui.createPopupMenu(TestPlanGui.java:92) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.tree.JMeterTreeNode.createPopupMenu(JMeterTreeNode.java:184) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.action.EditCommand.doAction(EditCommand.java:46) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.action.ActionRouter.performAction(ActionRouter.java:88) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.action.ActionRouter.lambda$actionPerformed$0(ActionRouter.java:70) [ApacheJMeter_core.jar:5.0 r1840935]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313) [?:?]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770) [?:?]
+	at java.awt.EventQueue.access$600(EventQueue.java:97) [?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:721) [?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:715) [?:?]
+	at java.security.AccessController.doPrivileged(Native Method) [?:?]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87) [?:?]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:740) [?:?]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) [?:?]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:90) [?:?]
+Caused by: java.lang.ClassNotFoundException: javafx.embed.swing.JFXPanel
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:466) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:566) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:499) ~[?:?]
+	... 33 more
+2019-01-30 17:21:00,204 INFO o.a.j.u.JMeterUtils: Setting Locale to fr
+2019-01-30 17:21:24,760 INFO o.a.j.u.JMeterUtils: Setting Locale to en
+2019-01-30 17:33:00,477 INFO o.a.j.s.FileServer: Set new base='/home/lea/eclipse-workspace/TEST/Camix_Java-v0.4/jmeter'
+2019-01-30 17:33:00,793 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2019-01-30 17:33:00,806 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2019-01-30 17:33:00,808 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2019-01-30 17:39:02,877 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2019-01-30 17:39:02,881 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2019-01-30 17:39:02,882 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2019-01-30 17:39:02,896 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2019-01-30 17:39:03,046 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Thread Group
+2019-01-30 17:39:03,047 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Thread Group.
+2019-01-30 17:39:03,047 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2019-01-30 17:39:03,048 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2019-01-30 17:39:03,059 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2019-01-30 17:39:03,059 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2019-01-30 17:39:03,068 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-1
+2019-01-30 17:39:03,077 ERROR o.a.j.p.t.s.TCPSampler: Could not find protocol class 'camix.TCPClientCamixImpl'
+2019-01-30 17:39:03,099 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-1
+2019-01-30 17:39:03,099 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-1
+2019-01-30 17:39:03,101 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2019-01-30 17:39:03,102 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2019-01-30 17:39:20,477 WARN o.a.j.v.ViewResultsFullVisualizer: Error loading result renderer: org.apache.jmeter.visualizers.RenderInBrowser
+java.lang.NoClassDefFoundError: javafx/embed/swing/JFXPanel
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Class.java:291) ~[?:?]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createComboRender(ViewResultsFullVisualizer.java:462) [ApacheJMeter_components.jar:5.0 r1840935]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createLeftPanel(ViewResultsFullVisualizer.java:430) [ApacheJMeter_components.jar:5.0 r1840935]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.init(ViewResultsFullVisualizer.java:342) [ApacheJMeter_components.jar:5.0 r1840935]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.<init>(ViewResultsFullVisualizer.java:147) [ApacheJMeter_components.jar:5.0 r1840935]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:488) ~[?:?]
+	at java.lang.Class.newInstance(Class.java:560) [?:?]
+	at org.apache.jmeter.gui.GuiPackage.getGuiFromCache(GuiPackage.java:405) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.GuiPackage.createTestElement(GuiPackage.java:352) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.action.AddToTree.doAction(AddToTree.java:68) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.action.ActionRouter.performAction(ActionRouter.java:88) [ApacheJMeter_core.jar:5.0 r1840935]
+	at org.apache.jmeter.gui.action.ActionRouter.lambda$actionPerformed$0(ActionRouter.java:70) [ApacheJMeter_core.jar:5.0 r1840935]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313) [?:?]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770) [?:?]
+	at java.awt.EventQueue.access$600(EventQueue.java:97) [?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:721) [?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:715) [?:?]
+	at java.security.AccessController.doPrivileged(Native Method) [?:?]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87) [?:?]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:740) [?:?]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) [?:?]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:90) [?:?]
+Caused by: java.lang.ClassNotFoundException: javafx.embed.swing.JFXPanel
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:466) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:566) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:499) ~[?:?]
+	... 30 more
+2019-01-30 17:39:22,392 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2019-01-30 17:39:22,394 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2019-01-30 17:39:22,400 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2019-01-30 17:39:22,531 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Thread Group
+2019-01-30 17:39:22,532 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Thread Group.
+2019-01-30 17:39:22,532 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2019-01-30 17:39:22,532 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2019-01-30 17:39:22,534 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2019-01-30 17:39:22,534 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2019-01-30 17:39:22,535 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-1
+2019-01-30 17:39:22,538 ERROR o.a.j.p.t.s.TCPSampler: Could not find protocol class 'camix.TCPClientCamixImpl'
+2019-01-30 17:39:22,540 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-1
+2019-01-30 17:39:22,541 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-1
+2019-01-30 17:39:22,543 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2019-01-30 17:39:22,544 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2019-01-30 17:39:57,646 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2019-01-30 17:39:57,649 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2019-01-30 17:39:57,651 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2019-01-30 17:39:57,790 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Thread Group
+2019-01-30 17:39:57,791 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Thread Group.
+2019-01-30 17:39:57,791 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2019-01-30 17:39:57,792 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2019-01-30 17:39:57,793 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2019-01-30 17:39:57,793 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2019-01-30 17:39:57,794 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-1
+2019-01-30 17:39:57,797 ERROR o.a.j.p.t.s.TCPSampler: Could not find protocol class 'camix.TCPClientCamixImpl'
+2019-01-30 17:39:57,799 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-1
+2019-01-30 17:39:57,799 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-1
+2019-01-30 17:39:57,800 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2019-01-30 17:39:57,801 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2019-01-30 17:43:22,302 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2019-01-30 17:43:22,305 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2019-01-30 17:43:22,308 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2019-01-30 17:43:22,455 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Thread Group
+2019-01-30 17:43:22,455 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Thread Group.
+2019-01-30 17:43:22,456 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2019-01-30 17:43:22,456 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2019-01-30 17:43:22,459 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2019-01-30 17:43:22,459 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2019-01-30 17:43:22,460 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-1
+2019-01-30 17:43:22,463 ERROR o.a.j.p.t.s.TCPSampler: Could not find protocol class 'camix.TCPClientCamixImpl'
+2019-01-30 17:43:22,465 ERROR o.a.j.p.t.s.TCPSampler: Could not find protocol class 'camix.TCPClientCamixImpl'
+2019-01-30 17:43:22,466 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-1
+2019-01-30 17:43:22,467 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-1
+2019-01-30 17:43:22,468 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2019-01-30 17:43:22,469 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2019-01-30 17:44:05,702 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2019-01-30 17:44:05,704 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2019-01-30 17:44:05,706 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2019-01-30 17:44:05,834 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Thread Group
+2019-01-30 17:44:05,834 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Thread Group.
+2019-01-30 17:44:05,835 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2019-01-30 17:44:05,835 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2019-01-30 17:44:05,837 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2019-01-30 17:44:05,837 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2019-01-30 17:44:05,838 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-1
+2019-01-30 17:44:05,841 ERROR o.a.j.p.t.s.TCPSampler: Could not find protocol class 'camix.TCPClientCamixImpl'
+2019-01-30 17:44:05,844 ERROR o.a.j.p.t.s.TCPSampler: Could not find protocol class 'camix.TCPClientCamixImpl'
+2019-01-30 17:44:05,847 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-1
+2019-01-30 17:44:05,847 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-1
+2019-01-30 17:44:05,849 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2019-01-30 17:44:05,851 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
