@@ -182,6 +182,7 @@ public class VueChat extends VueFelix implements ActionListener, Runnable
 		
 		if(message.equals("/q")) {
 			this.ferme();
+			this.donneControleur().basculeVueConnexion();
 		}
 
 		try {
