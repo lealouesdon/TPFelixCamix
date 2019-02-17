@@ -140,31 +140,31 @@ public class FelixTestConnexionPossible {
 
 		// R�cup�ration de la fen�tre de la vue de connexion (par son titre).
 		FelixTestConnexionPossible.fenetre[index] = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_TITRE"));
-		Assert.assertNotNull("La fen�tre de connexion n'est pas accessible.", FelixTestConnexionPossible.fenetre);
+		Assert.assertNotNull("La fen�tre de connexion n'est pas accessible.", FelixTestConnexionPossible.fenetre[index]);
 
 		FelixTestConnexionPossible.adresseTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetre[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_SAISIE_IP")));
-		Assert.assertNotNull("Le champ de saisie de l'adresse n'est pas accessible.", FelixTestConnexionPossible.adresseTextField);
+		Assert.assertNotNull("Le champ de saisie de l'adresse n'est pas accessible.", FelixTestConnexionPossible.adresseTextField[index]);
 
 		FelixTestConnexionPossible.portTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetre[index], new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_SAISIE_PORT")));
 		Assert.assertNotNull("Le champ de saisie du port n'est pas accessible.", FelixTestConnexionPossible.portTextField);
 
 		FelixTestConnexionPossible.connexionButton[index] = new JButtonOperator(FelixTestConnexionPossible.fenetre[index], Felix.CONFIGURATION.getString("FENETRE_CONNEXION_BOUTON_CONNECTER"));
-		Assert.assertNotNull("Le bouton de connexion n'est pas accessible.", FelixTestConnexionPossible.connexionButton);
+		Assert.assertNotNull("Le bouton de connexion n'est pas accessible.", FelixTestConnexionPossible.connexionButton[index]);
 
 		FelixTestConnexionPossible.messageTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetre[index], new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_MESSAGE_NOM")));
-		Assert.assertNotNull("Le champ de message n'est pas accessible.", FelixTestConnexionPossible.messageTextField);
+		Assert.assertNotNull("Le champ de message n'est pas accessible.", FelixTestConnexionPossible.messageTextField[index]);
 	}
 
 	private static void recuperationVueChat(int index){
 
-		FelixTestConnexionPossible.fenetreChat[index] = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CHAT_TITRE"));
+		FelixTestConnexionPossible.fenetreChat[index] = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CHAT_TITRE"), index);
 		Assert.assertNotNull("La fen�tre de chat n'est pas accessible.", FelixTestConnexionPossible.fenetreChat[index]);
 
 		FelixTestConnexionPossible.saisieTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetreChat[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CHAT_SAISIE_MESSAGE")));
-		Assert.assertNotNull("Le champ de saisie de message n'est pas accessible.", FelixTestConnexionPossible.saisieTextField);
+		Assert.assertNotNull("Le champ de saisie de message n'est pas accessible.", FelixTestConnexionPossible.saisieTextField[index]);
 
 		FelixTestConnexionPossible.messagesTextPan[index] = new JTextPaneOperator(FelixTestConnexionPossible.fenetreChat[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CHAT_AFFICHAGE_MESSAGE")));
-		Assert.assertNotNull("L'affichage des messages n'est pas accessible.", FelixTestConnexionPossible.messagesTextPan);
+		Assert.assertNotNull("L'affichage des messages n'est pas accessible.", FelixTestConnexionPossible.messagesTextPan[index]);
 
 	}
 
@@ -193,12 +193,17 @@ public class FelixTestConnexionPossible {
 		}
 	}
 
+	/**
+	 * Vérification qu'un message est bien envoyé au client qui se déconnecte ainsi qu'aux autres utilisateurs
+	 */
 	@Test
 	public void test003NotificationDeconnexionUtilisateur(){
-		saisieTextField[1].enterText("/q");
+		saisieTextField[NBINSTANCES-1].enterText("/q");
+		String message = messagesTextPan[1].getText();
+		assertTrue(message.toLowerCase().contains("* Sortie du chat.".toLowerCase()));
 		for(int i = 0; i<NBINSTANCES-1; i++){
-			String message = messagesTextPan[i].getText();
-			assertTrue(message.toLowerCase().contains("* ? quitte le chat.".toLowerCase()));
+			message = messagesTextPan[i].getText().toString();
+			assertTrue(message.toLowerCase().contains("* ? quitte le chat".toLowerCase()));
 		}
 	}
 
