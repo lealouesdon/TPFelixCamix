@@ -171,7 +171,7 @@ public class ClientChat extends Thread
 					this.chat.afficheInformationsClient(this);
 					break;
 				case ProtocoleChat.COMMANDE_FERME_CHAT :
-					this.chat.fermeConnexion(this);
+					this.chat.sortiChat(this);
 					break;
 				default :
 					this.chat.afficheAide(this);

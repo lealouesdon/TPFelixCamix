@@ -2,8 +2,10 @@ package camix.service;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.Time;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 import camix.communication.ConnexionServeur;
 import camix.communication.ProtocoleChat;
@@ -379,5 +381,17 @@ public final class ServiceChat
 
 		// Fermeture de la connexion du client.
 		client.fermeConnexion();
+	}
+
+	public void sortiChat(ClientChat client)
+	{
+		afficheSortiChat(client);
+
+		client.fermeConnexion();
+	}
+
+	public void afficheSortiChat(ClientChat clientChat){
+		final String message = String.format(ProtocoleChat.MESSAGE_SORTI_CHAT);
+		clientChat.envoieMessage(message);
 	}
 }

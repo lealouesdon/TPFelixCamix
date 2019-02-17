@@ -95,7 +95,7 @@ public class FelixTestConnexionPossible {
 	private static void lanceInstancesFelix() throws Exception{
 		for(int i = 0; i<NBINSTANCES; i++ ){
 			lanceInstance(i);
-			final Long timeout = Long.valueOf(1000);
+			final Long timeout = Long.valueOf(2000);
 			Thread.sleep(timeout);
 		}
 	}
