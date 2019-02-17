@@ -12,11 +12,14 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JTextField;
 
 import org.easymock.EasyMock;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.netbeans.jemmy.ClassReference;
@@ -31,6 +34,7 @@ import felix.Felix;
 import felix.controleur.ControleurFelix;
 import felix.vue.VueConnexion;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FelixTestConnexionPossible {
 
 	private static final int NBINSTANCES = 2;
@@ -73,24 +77,31 @@ public class FelixTestConnexionPossible {
 	public static void setUp() throws Exception{
 
 		// Fixe les timeouts de Jemmy (http://wiki.netbeans.org/Jemmy_Operators_Environment#Timeouts),
-		// ici : 3s pour l'affichage d'une frame ou une attente de changement d'état (waitText par exemple).
+		// ici : 3s pour l'affichage d'une frame ou une attente de changement d'ï¿½tat (waitText par exemple).
 		final Integer timeout = 3000;
 		JemmyProperties.setCurrentTimeout("FrameWaiter.WaitFrameTimeout", timeout);
 		JemmyProperties.setCurrentTimeout("ComponentOperator.WaitStateTimeout", timeout);
 
-		// Démarrage de l'instance de Felix nécessaire aux tests.
+		// Dï¿½marrage de l'instance de Felix nï¿½cessaire aux tests.
 		try {
 			FelixTestConnexionPossible.application = new ClassReference("felix.Felix");
 			FelixTestConnexionPossible.parametres = new String[1];
-			FelixTestConnexionPossible.parametres[0] = ""; //"-b" en mode bouchonné, "" en mode collaboration avec Camix;
+			FelixTestConnexionPossible.parametres[0] = ""; //"-b" en mode bouchonnï¿½, "" en mode collaboration avec Camix;
 
 			lanceInstancesFelix();
 		}
 		catch (ClassNotFoundException e) {
-			Assert.fail("Problème d'accès à la classe invoquée : " + e.getMessage());
+			Assert.fail("Problï¿½me d'accï¿½s ï¿½ la classe invoquï¿½e : " + e.getMessage());
 			throw e;
 		}
 	}
+
+	/*@After
+	public void clean(){
+		for(int i = 0; i<NBINSTANCES; i++ ){
+			saisieTextField[i].enterText("/q");
+		}
+	}*/
 
 	private static void lanceInstancesFelix() throws Exception{
 		for(int i = 0; i<NBINSTANCES; i++ ){
@@ -106,11 +117,11 @@ public class FelixTestConnexionPossible {
             FelixTestConnexionPossible.application.startApplication(FelixTestConnexionPossible.parametres);
         }
         catch (InvocationTargetException e) {
-            Assert.fail("Problème d'invocation de l'application : " + e.getMessage());
+            Assert.fail("Problï¿½me d'invocation de l'application : " + e.getMessage());
             throw e;
         }
         catch (NoSuchMethodException e) {
-            Assert.fail("Problème d'accès à la méthode invoquée : " + e.getMessage());
+            Assert.fail("Problï¿½me d'accï¿½s ï¿½ la mï¿½thode invoquï¿½e : " + e.getMessage());
             throw e;
         }
         recuperationVue(index);
@@ -119,7 +130,7 @@ public class FelixTestConnexionPossible {
     }
 
 	private static void connexionCamix(int index){
-		// Connexion à camix
+		// Connexion ï¿½ camix
         portTextField[index].enterText(port[index].toString());
 		adresseTextField[index].enterText(ip[index]);
 		connexionButton[index].clickMouse();
@@ -127,9 +138,9 @@ public class FelixTestConnexionPossible {
 
 	private static void recuperationVue(int index){
 
-		// Récupération de la fenêtre de la vue de connexion (par son titre).
+		// Rï¿½cupï¿½ration de la fenï¿½tre de la vue de connexion (par son titre).
 		FelixTestConnexionPossible.fenetre[index] = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_TITRE"));
-		Assert.assertNotNull("La fenêtre de connexion n'est pas accessible.", FelixTestConnexionPossible.fenetre);
+		Assert.assertNotNull("La fenï¿½tre de connexion n'est pas accessible.", FelixTestConnexionPossible.fenetre);
 
 		FelixTestConnexionPossible.adresseTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetre[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_SAISIE_IP")));
 		Assert.assertNotNull("Le champ de saisie de l'adresse n'est pas accessible.", FelixTestConnexionPossible.adresseTextField);
@@ -147,7 +158,7 @@ public class FelixTestConnexionPossible {
 	private static void recuperationVueChat(int index){
 
 		FelixTestConnexionPossible.fenetreChat[index] = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CHAT_TITRE"));
-		Assert.assertNotNull("La fenêtre de chat n'est pas accessible.", FelixTestConnexionPossible.fenetreChat[index]);
+		Assert.assertNotNull("La fenï¿½tre de chat n'est pas accessible.", FelixTestConnexionPossible.fenetreChat[index]);
 
 		FelixTestConnexionPossible.saisieTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetreChat[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CHAT_SAISIE_MESSAGE")));
 		Assert.assertNotNull("Le champ de saisie de message n'est pas accessible.", FelixTestConnexionPossible.saisieTextField);
@@ -158,13 +169,13 @@ public class FelixTestConnexionPossible {
 	}
 
 	/**
-	 * Test si les fenetres de chat ont bien été ouvertes pour toutes les instances et donc que la connexion a été ouverte avec Camix.
-	 * Vérifie également que les fenetres de connexions ont été fermées
+	 * Test si les fenetres de chat ont bien ï¿½tï¿½ ouvertes pour toutes les instances et donc que la connexion a ï¿½tï¿½ ouverte avec Camix.
+	 * Vï¿½rifie ï¿½galement que les fenetres de connexions ont ï¿½tï¿½ fermï¿½es
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
 	@Test
-	public void testConnexion() throws InterruptedException, IOException {
+	public void test001Connexion() throws InterruptedException, IOException {
 		for(int i = 0; i<NBINSTANCES; i++){
 			assertFalse(fenetre[i].isVisible());
 			assertTrue(fenetreChat[i].isVisible());
@@ -172,22 +183,23 @@ public class FelixTestConnexionPossible {
 	}
 
 	/**
-	 * Recupère le contenu des messages des instances pour vérifier que l'arrivée d'un nouvel utilisateur a bien été notifié
+	 * Recupï¿½re le contenu des messages des instances pour vï¿½rifier que l'arrivï¿½e d'un nouvel utilisateur a bien ï¿½tï¿½ notifiï¿½
 	 */
 	@Test
-	public void testNotificationArriveUtilisateur(){
+	public void test002NotificationArriveUtilisateur(){
 		for(int i = 0; i<NBINSTANCES-1; i++){
-			String message = messagesTextPan[i].getText();
-			assertTrue(message.contains("Un  nouvel  utilisateur  est  dans le chat"));
+			String message = messagesTextPan[i].getText().toString();
+			assertTrue(message.toLowerCase().contains("* Un nouvel utilisateur est dans le chat (place publique).".toLowerCase()));
 		}
 	}
 
 	@Test
-	public void testNotificationDeconnexionUtilisateur(){
+	public void test003NotificationDeconnexionUtilisateur(){
 		saisieTextField[1].enterText("/q");
-		String message = messagesTextPan[1].getText();
-		sleep(5);
-		assertTrue(message.contains("deconnexion"));
+		for(int i = 0; i<NBINSTANCES-1; i++){
+			String message = messagesTextPan[i].getText();
+			assertTrue(message.toLowerCase().contains("* ? quitte le chat.".toLowerCase()));
+		}
 	}
 
 
