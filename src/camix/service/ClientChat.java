@@ -7,13 +7,13 @@ import camix.communication.ConnexionClient;
 import camix.communication.ProtocoleChat;
 
 /**
- * Classe client du serveur. 
- * 
+ * Classe client du serveur.
+ *
  * @version 3.0
- * @author Matthias Brun 
- * 
+ * @author Matthias Brun
+ *
  */
-public class ClientChat extends Thread 
+public class ClientChat extends Thread
 {
 	/**
 	 * Identifiant du client.
@@ -24,12 +24,12 @@ public class ClientChat extends Thread
 	 * Le surnom du client.
 	 */
 	private String surnom;
-	
+
 	/**
 	 * Le canal du client.
 	 */
 	private CanalChat canal;
-	
+
 	/**
 	 * La connexion réseau avec le client.
 	 */
@@ -43,7 +43,7 @@ public class ClientChat extends Thread
 
 	/**
 	 * Accesseur à l'identifiant (interne) du client.
-	 * 
+	 *
 	 * @return l'identifiant du client.
 	 */
 	public String donneId()
@@ -75,7 +75,7 @@ public class ClientChat extends Thread
 	 * Constructeur d'un client du chat.
 	 *
 	 * @param chat le chat du client.
-	 * @param socket la socket de connexion du client. 
+	 * @param socket la socket de connexion du client.
 	 * @param surnom le surnom du client.
 	 * @param canal le canal du client.
 	 *
@@ -85,11 +85,11 @@ public class ClientChat extends Thread
 	public ClientChat(ServiceChat chat, Socket socket, String surnom, CanalChat canal) throws IOException
 	{
 		super();
-		
+
 		this.chat = chat;
 		this.surnom = surnom;
 		this.canal = canal;
-		
+
 		try {
 			// Création d'une connexion réseau avec le client.
 			this.connexion = new ConnexionClient(socket);
@@ -98,7 +98,7 @@ public class ClientChat extends Thread
 			System.err.println("Problème de mise en place d'une gestion de client.");
 			throw ex;
 		}
-		
+
 		// Utilisation de la socket de connexion du client comme identifiant.
 		this.id = socket.toString();
 	}
@@ -110,14 +110,14 @@ public class ClientChat extends Thread
 	{
 		this.start();
 	}
-	
+
 	/**
-	 * Point d'entrée du thread de service au client 
+	 * Point d'entrée du thread de service au client
 	 * (atteint via start() dans le lancement du service au client).
-	 * 
+	 *
 	 * <p>
 	 * Lecture de messages sur la socket de communication avec le client puis traitement du message.
-	 * S'arrête quand le message est <tt>null</tt>. 
+	 * S'arrête quand le message est <tt>null</tt>.
 	 * </p>
 	 */
 	public void run()
@@ -135,70 +135,69 @@ public class ClientChat extends Thread
 		catch (IOException ex) {
 			System.err.println("Problème de gestion d'un client - id : " + this.id);
 			System.err.println(ex.getMessage());
-		} 
+		}
 		finally {
 			this.chat.fermeConnexion(this);
 		}
 	}
-	
+
 	/**
 	 * Traitement d'un message envoyé par le client.
-	 * 
+	 *
 	 * @param message le message à traiter.
 	 */
 	private void traiteMessage(String message)
 	{
 		if (ProtocoleChat.estUneCommande(message)) {
-			
+
 			switch (ProtocoleChat.commandeDuMessage(message)) {
 
-				case ProtocoleChat.COMMANDE_CHANGE_SURNOM_CLIENT : 
+				case ProtocoleChat.COMMANDE_CHANGE_SURNOM_CLIENT :
 					this.chat.changeSurnomClient(this, ProtocoleChat.parametreCommande(message));
 					break;
-				case ProtocoleChat.COMMANDE_CHANGE_CANAL_CLIENT : 
-					this.chat.changeCanalClient(this, ProtocoleChat.parametreCommande(message)); 
+				case ProtocoleChat.COMMANDE_CHANGE_CANAL_CLIENT :
+					this.chat.changeCanalClient(this, ProtocoleChat.parametreCommande(message));
 					break;
-				case ProtocoleChat.COMMANDE_AJOUTE_CANAL : 
-					this.chat.ajouteCanal(this, ProtocoleChat.parametreCommande(message)); 
+				case ProtocoleChat.COMMANDE_AJOUTE_CANAL :
+					this.chat.ajouteCanal(this, ProtocoleChat.parametreCommande(message));
 					break;
-				case ProtocoleChat.COMMANDE_SUPPRIME_CANAL : 
-					this.chat.supprimeCanal(this, ProtocoleChat.parametreCommande(message)); 
+				case ProtocoleChat.COMMANDE_SUPPRIME_CANAL :
+					this.chat.supprimeCanal(this, ProtocoleChat.parametreCommande(message));
 					break;
-				case ProtocoleChat.COMMANDE_AFFICHE_CANAUX : 
+				case ProtocoleChat.COMMANDE_AFFICHE_CANAUX :
 					this.chat.afficheCanaux(this);
 					break;
-				case ProtocoleChat.COMMANDE_AFFICHE_CLIENT : 
+				case ProtocoleChat.COMMANDE_AFFICHE_CLIENT :
 					this.chat.afficheInformationsClient(this);
 					break;
 				case ProtocoleChat.COMMANDE_FERME_CHAT :
 					this.chat.fermeConnexion(this);
 					break;
-				
-				default : 
+				default :
 					this.chat.afficheAide(this);
-					break;		
+					break;
 			}
 		} else {
 			// Si le message n'est pas une commande,
-			// le message est à transmettre aux clients du canal de l'emetteur. 
+			// le message est à transmettre aux clients du canal de l'emetteur.
 			this.envoieCanal(String.format(ProtocoleChat.MESSAGE_PREFIXE_MESSAGE, this.donneSurnom(), message));
 		}
 	}
-	
-	
+
+
 	/**
 	 * Change le surnom du client.
-	 * 
+	 *
 	 * @param surnom le nouveau surnom du client.
 	 */
 	public void changeSurnom(String surnom)
 	{
 		this.surnom = surnom;
-	} 
+	}
 
 	/**
 	 * Change le canal du client.
-	 * 
+	 *
 	 * @param canal le nouveau canal du client.
 	 */
 	public void changeCanal(CanalChat canal)
@@ -212,7 +211,7 @@ public class ClientChat extends Thread
 
 	/**
 	 * Envoyer un message à un client.
-	 * 
+	 *
 	 * @param message le message à envoyer.
 	 *
 	 */
@@ -220,13 +219,13 @@ public class ClientChat extends Thread
 	{
 		try {
 			this.connexion.ecrire(message);
-		} 
-		catch (IOException ex) { 
-			System.err.println("Problème d'envoi d'un message à un client - id : " + this.id); 
+		}
+		catch (IOException ex) {
+			System.err.println("Problème d'envoi d'un message à un client - id : " + this.id);
 			System.err.println(ex.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Transmet un message à tous les contacts d'un client du chat (les clients du même canal).
 	 *
@@ -237,13 +236,13 @@ public class ClientChat extends Thread
 	 */
 	public void envoieContacts(String message)
 	{
-		// Synchronisation : 
+		// Synchronisation :
 		// Pour éviter qu'un client ne soit supprimé du canal lors de l'envoi.
 		synchronized (this.canal) {
 			this.canal.envoieContacts(this, message);
 		}
 	}
-	
+
 	/**
 	 * Envoie d'un message sur le canal d'un client.
 	 *
@@ -252,25 +251,25 @@ public class ClientChat extends Thread
 	 */
 	public void envoieCanal(String message)
 	{
-		// Synchronisation : 
+		// Synchronisation :
 		// Pour éviter qu'un client ne soit supprimé du canal lors de l'envoi.
 		synchronized (this.canal) {
 			this.canal.envoieClients(message);
 		}
 	}
-	
+
 	/**
 	 * Fermeture de la connexion du client.
 	 *
 	 */
-	public void fermeConnexion() 
+	public void fermeConnexion()
 	{
 		// Synchronisation :
 		// Pour éviter qu'une connexion soit fermée lors de l'envoi d'un message sur le canal du client.
 		synchronized (this.canal) {
 			// Suppression du client dans le canal.
 			this.canal.enleveClient(this);
-		
+
 			// Fermeture de la connexion.
 			this.connexion.ferme();
 		}

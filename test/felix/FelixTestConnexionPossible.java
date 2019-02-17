@@ -24,52 +24,49 @@ import org.netbeans.jemmy.JemmyProperties;
 import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;
 import org.netbeans.jemmy.operators.JTextFieldOperator;
+import org.netbeans.jemmy.operators.JTextPaneOperator;
 import org.netbeans.jemmy.util.NameComponentChooser;
 
 import felix.Felix;
 import felix.controleur.ControleurFelix;
 import felix.vue.VueConnexion;
 
-@RunWith(Parameterized.class)
 public class FelixTestConnexionPossible {
+
+	private static final int NBINSTANCES = 2;
 
 	private static ClassReference application;
 
 	private static String[] parametres;
 
-	private static JFrameOperator fenetre;
+	private static JFrameOperator[] fenetre = new JFrameOperator[NBINSTANCES];
+
+	private static JFrameOperator[] fenetreChat = new JFrameOperator[NBINSTANCES];
 
 	private static VueConnexion vueConnexion;
 
-	private static JTextFieldOperator adresseTextField;
+	private static JTextFieldOperator[] adresseTextField = new JTextFieldOperator[NBINSTANCES];
 
-	private static JTextFieldOperator portTextField;
+	private static JTextFieldOperator[] portTextField= new JTextFieldOperator[NBINSTANCES];
 
-	private static JTextFieldOperator messageTextField;
+	private static JTextFieldOperator[] messageTextField= new JTextFieldOperator[NBINSTANCES];
 
-	private static JButtonOperator connexionButton;
+	private static JTextFieldOperator[] saisieTextField= new JTextFieldOperator[NBINSTANCES];
 
-	private static String ip;
+	private static JTextPaneOperator[] messagesTextPan= new JTextPaneOperator[NBINSTANCES];
 
-	private static Integer port;
+	private static JButtonOperator[] connexionButton= new JButtonOperator[NBINSTANCES];
 
-	private static ControleurFelix controleurFelix;
+	private static String ip[] = {"127.0.0.1","127.0.0.1"};
 
-	/**
-	 * Configuration des parametres injectés lors de l'appel aux tests
-	 * @return
-	 */
-	@Parameters(name = "dt[{index}] : {0}, {1}")
-	public static Collection<Object[]> params() {
-		final Object[][] data = new Object[][] {
-			{"127.0.0.1",12345}// L'application cible n'est pas camix
-		};
-    	return Arrays.asList(data);
-	}
+	private static Integer port[] = {12345,12345};
 
-	public FelixTestConnexionPossible(final String ip, final Integer port) {
-	    FelixTestConnexionPossible.ip = ip;
-	    FelixTestConnexionPossible.port = port;
+	private static ControleurFelix[] controleurFelix;
+
+
+	public FelixTestConnexionPossible() {
+//	    FelixTestConnexionPossible.ip = "127.0.0.1";
+//	    FelixTestConnexionPossible.port = 12345;
 	}
 
 	@BeforeClass
@@ -87,12 +84,7 @@ public class FelixTestConnexionPossible {
 			FelixTestConnexionPossible.parametres = new String[1];
 			FelixTestConnexionPossible.parametres[0] = ""; //"-b" en mode bouchonné, "" en mode collaboration avec Camix;
 
-			lanceInstance();
-
-			// 10 secondes d'observation par suspension du thread (objectif pédagogique)
-			// (pour prendre le temps de déplacer les fenêtres à l'écran).
-			final Long timeoutObs = Long.valueOf(1000);
-			Thread.sleep(timeoutObs);
+			lanceInstancesFelix();
 		}
 		catch (ClassNotFoundException e) {
 			Assert.fail("Problème d'accès à la classe invoquée : " + e.getMessage());
@@ -100,10 +92,17 @@ public class FelixTestConnexionPossible {
 		}
 	}
 
-	private static void lanceInstance() throws Exception
+	private static void lanceInstancesFelix() throws Exception{
+		for(int i = 0; i<NBINSTANCES; i++ ){
+			lanceInstance(i);
+			final Long timeout = Long.valueOf(1000);
+			Thread.sleep(timeout);
+		}
+	}
+
+	private static void lanceInstance(int index) throws Exception
     {
         try {
-            // Lancement d'une application.
             FelixTestConnexionPossible.application.startApplication(FelixTestConnexionPossible.parametres);
         }
         catch (InvocationTargetException e) {
@@ -114,44 +113,85 @@ public class FelixTestConnexionPossible {
             Assert.fail("Problème d'accès à la méthode invoquée : " + e.getMessage());
             throw e;
         }
-        recuperationVue();
-}
+        recuperationVue(index);
+        connexionCamix(index);
+        recuperationVueChat(index);
+    }
 
-	private static void recuperationVue(){
-		// TODO Auto-generated method stub
-		// Index pour la récupération des widgets.
-		Integer index = 0;
+	private static void connexionCamix(int index){
+		// Connexion à camix
+        portTextField[index].enterText(port[index].toString());
+		adresseTextField[index].enterText(ip[index]);
+		connexionButton[index].clickMouse();
+	}
 
-		// Récupération de la fenêtre de la vue de la caisse (par son titre).
-		FelixTestConnexionPossible.fenetre = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_TITRE"));
-		Assert.assertNotNull("La fenêtre de la vue caisse n'est pas accessible.", FelixTestConnexionPossible.fenetre);
+	private static void recuperationVue(int index){
 
-		FelixTestConnexionPossible.adresseTextField = new JTextFieldOperator(FelixTestConnexionPossible.fenetre,new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_SAISIE_IP")));
+		// Récupération de la fenêtre de la vue de connexion (par son titre).
+		FelixTestConnexionPossible.fenetre[index] = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_TITRE"));
+		Assert.assertNotNull("La fenêtre de connexion n'est pas accessible.", FelixTestConnexionPossible.fenetre);
+
+		FelixTestConnexionPossible.adresseTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetre[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_SAISIE_IP")));
 		Assert.assertNotNull("Le champ de saisie de l'adresse n'est pas accessible.", FelixTestConnexionPossible.adresseTextField);
 
-		FelixTestConnexionPossible.portTextField = new JTextFieldOperator(FelixTestConnexionPossible.fenetre, new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_SAISIE_PORT")));
+		FelixTestConnexionPossible.portTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetre[index], new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_SAISIE_PORT")));
 		Assert.assertNotNull("Le champ de saisie du port n'est pas accessible.", FelixTestConnexionPossible.portTextField);
 
-		FelixTestConnexionPossible.connexionButton = new JButtonOperator(FelixTestConnexionPossible.fenetre, Felix.CONFIGURATION.getString("FENETRE_CONNEXION_BOUTON_CONNECTER"));
+		FelixTestConnexionPossible.connexionButton[index] = new JButtonOperator(FelixTestConnexionPossible.fenetre[index], Felix.CONFIGURATION.getString("FENETRE_CONNEXION_BOUTON_CONNECTER"));
 		Assert.assertNotNull("Le bouton de connexion n'est pas accessible.", FelixTestConnexionPossible.connexionButton);
 
-		FelixTestConnexionPossible.messageTextField = new JTextFieldOperator(FelixTestConnexionPossible.fenetre, new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_MESSAGE_NOM")));
+		FelixTestConnexionPossible.messageTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetre[index], new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_MESSAGE_NOM")));
 		Assert.assertNotNull("Le champ de message n'est pas accessible.", FelixTestConnexionPossible.messageTextField);
 	}
 
+	private static void recuperationVueChat(int index){
+
+		FelixTestConnexionPossible.fenetreChat[index] = new JFrameOperator(Felix.CONFIGURATION.getString("FENETRE_CHAT_TITRE"));
+		Assert.assertNotNull("La fenêtre de chat n'est pas accessible.", FelixTestConnexionPossible.fenetreChat[index]);
+
+		FelixTestConnexionPossible.saisieTextField[index] = new JTextFieldOperator(FelixTestConnexionPossible.fenetreChat[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CHAT_SAISIE_MESSAGE")));
+		Assert.assertNotNull("Le champ de saisie de message n'est pas accessible.", FelixTestConnexionPossible.saisieTextField);
+
+		FelixTestConnexionPossible.messagesTextPan[index] = new JTextPaneOperator(FelixTestConnexionPossible.fenetreChat[index],new NameComponentChooser(Felix.CONFIGURATION.getString("FENETRE_CHAT_AFFICHAGE_MESSAGE")));
+		Assert.assertNotNull("L'affichage des messages n'est pas accessible.", FelixTestConnexionPossible.messagesTextPan);
+
+	}
+
+	/**
+	 * Test si les fenetres de chat ont bien été ouvertes pour toutes les instances et donc que la connexion a été ouverte avec Camix.
+	 * Vérifie également que les fenetres de connexions ont été fermées
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	@Test
-	public void testConnexionPossible() throws InterruptedException, IOException {
-		// ATTENTION A GERER LA COHERENCE DE L AFFICHAGE DES FENETRE avec l'ouverture de tchat si ca fail
-		portTextField.enterText(port.toString());
-		adresseTextField.enterText(ip);
-		connexionButton.clickMouse();
-		messageTextField.waitText(String.format(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_MESSAGE_CONNEXION"), ip, port));
-		sleep(2);
+	public void testConnexion() throws InterruptedException, IOException {
+		for(int i = 0; i<NBINSTANCES; i++){
+			assertFalse(fenetre[i].isVisible());
+			assertTrue(fenetreChat[i].isVisible());
+		}
+	}
+
+	/**
+	 * Recupère le contenu des messages des instances pour vérifier que l'arrivée d'un nouvel utilisateur a bien été notifié
+	 */
+	@Test
+	public void testNotificationArriveUtilisateur(){
+		for(int i = 0; i<NBINSTANCES-1; i++){
+			String message = messagesTextPan[i].getText();
+			assertTrue(message.contains("Un  nouvel  utilisateur  est  dans le chat"));
+		}
+	}
+
+	@Test
+	public void testNotificationDeconnexionUtilisateur(){
+		saisieTextField[1].enterText("/q");
+		String message = messagesTextPan[1].getText();
+		sleep(5);
+		assertTrue(message.contains("deconnexion"));
 	}
 
 
-
-	private void sleep(int second){
+	private static void sleep(int second){
 		try {
 			TimeUnit.SECONDS.sleep(second);
 		} catch (InterruptedException e) {

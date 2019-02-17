@@ -155,6 +155,7 @@ public class FelixTestConnexionImpossible {
 		messageTextField.waitText(String.format(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_MESSAGE_CONNEXION"), ip, port));
 		sleep(2);
 		messageTextField.waitText(String.format(Felix.CONFIGURATION.getString("FENETRE_CONNEXION_MESSAGE_CONNEXION_IMPOSSIBLE"), ip, port));
+		assertTrue(fenetre.isVisible()); // On vérifie que la fenêtre de connexion ne s'est pas fermée
 	}
 
 
