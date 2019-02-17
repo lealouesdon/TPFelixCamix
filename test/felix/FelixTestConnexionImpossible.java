@@ -68,8 +68,7 @@ public class FelixTestConnexionImpossible {
 		final Object[][] data = new Object[][] {
 			{"aaa.bbb.ccc.ddd",12345}, // Adresse impossible
             {"127.0.0.0", 12221}, // Port mauvais
-            {"192.168.2.50", 12345}, // Adresse mauvaise
-            {"127.0.0.1", 80} // L'application cible n'est pas camix
+            {"192.168.2.50", 12345} // Adresse mauvaise
 		};
     	return Arrays.asList(data);
 	}

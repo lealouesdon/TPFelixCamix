@@ -108,6 +108,10 @@ public class FelixTestSortieChat {
 		 * On vérifie qu'après la commande /q, l'utilisateur a bien été retiré du canal
 		 */
 		assertTrue(canalChat.donneNombreClients() == 1);
+	}
+
+	@Test
+	public void test(){
 
 	}
 }

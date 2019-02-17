@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de test" enabled="true">
+      <stringProp name="TestPlan.comments">Hello plan de test Morix</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ConfigTestElement guiclass="TCPConfigGui" testclass="ConfigTestElement" testname="Paramètres TCP par défaut : ex. connexion Camix" enabled="true">
+        <stringProp name="TCPSampler.server">127.0.0.1</stringProp>
+        <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+        <stringProp name="TCPSampler.port">12345</stringProp>
+        <boolProp name="TCPSampler.nodelay">false</boolProp>
+        <stringProp name="TCPSampler.timeout">500</stringProp>
+        <stringProp name="TCPSampler.request"></stringProp>
+        <stringProp name="TestPlan.comments">Connexion au serveur Morix.</stringProp>
+        <stringProp name="TCPSampler.classname">camix.TCPClientCamixImpl</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables pré-définies : ex. protocole" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="COMMANDE_CHANGE_SURNOM_CLIENT" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_CHANGE_SURNOM_CLIENT</stringProp>
+            <stringProp name="Argument.value">/n</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COMMANDE_AFFICHE_AIDE" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_AFFICHE_AIDE</stringProp>
+            <stringProp name="Argument.value">/h</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COMMANDE_CHANGE_CANAL_CLIENT" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_CHANGE_CANAL_CLIENT</stringProp>
+            <stringProp name="Argument.value">/c</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COMMANDE_AJOUTE_CANAL" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_AJOUTE_CANAL</stringProp>
+            <stringProp name="Argument.value">/a</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COMMANDE_SUPPRIME_CANAL" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_SUPPRIME_CANAL</stringProp>
+            <stringProp name="Argument.value">/r</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COMMANDE_AFFICHE_CANAUX" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_AFFICHE_CANAUX</stringProp>
+            <stringProp name="Argument.value">/l</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COMMANDE_AFFICHE_CLIENT" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_AFFICHE_CLIENT</stringProp>
+            <stringProp name="Argument.value">/?</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="COMMANDE_FERME_CHAT" elementType="Argument">
+            <stringProp name="Argument.name">COMMANDE_FERME_CHAT</stringProp>
+            <stringProp name="Argument.value">/q</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+        <stringProp name="TestPlan.comments">Variables du protocole de communication avec le serveur Morix.</stringProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Groupe d&apos;unités de tests : ex. DT avec variables" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Contrôleur Boucle" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1326834645000</longProp>
+        <longProp name="ThreadGroup.end_time">1326834645000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="TestPlan.comments">Groupe d&apos;unités de test du serveur Morix - utilisation de variables pré-définies pour les DT</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Compteur de temps fixe" enabled="true">
+          <stringProp name="ConstantTimer.delay">500</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Affichage de l&apos;aide" enabled="true">
+          <stringProp name="TestPlan.comments">Inscription d&apos;un client au canal de diffusion des informations de Morix.</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_AFFICHE_AIDE}</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1835107745">* Taper /h pour avoir de l&apos;aide sur les commandes du chat.</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="-860943523">* Commandes disponibles :</stringProp>
+              <stringProp name="-909966383">/n : changer de surnom ;</stringProp>
+              <stringProp name="1377906951">/c : changer de canal ;</stringProp>
+              <stringProp name="-964033070">/l : afficher les canaux ;</stringProp>
+              <stringProp name="-716998660">/a : créer un canal ;</stringProp>
+              <stringProp name="1016233329">/r : supprimer un canal ;</stringProp>
+              <stringProp name="-1039220207">/? : afficher ses informations ;</stringProp>
+              <stringProp name="-880550805">/h : afficher l&apos;aide .</stringProp>
+              <stringProp name="1372625984">/q : Sortir du chat .</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Changement de canal sans paramètre" enabled="true">
+          <stringProp name="TestPlan.comments">Inscription d&apos;un client au canal de diffusion des informations de Morix.</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_CHANGE_CANAL_CLIENT}</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="55333613">* Le canal demandé n&apos;existe pas.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Changement de surnom" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité du produit (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_CHANGE_SURNOM_CLIENT} name</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1947094169">* ? devient name.
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Ecriture de message" enabled="true">
+          <stringProp name="TestPlan.comments">Test d&apos;incrément d&apos;une quantité du produit (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">hello</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1135469019">name &gt; hello</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Création du canal" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_AJOUTE_CANAL} canal1</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-2031956310">* Le canal canal1 a été créé.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Changement de canal " enabled="true">
+          <stringProp name="TestPlan.comments">Inscription d&apos;un client au canal de diffusion des informations de Morix.</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_CHANGE_CANAL_CLIENT} canal1</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-799215591">* name quitte le canal place publique.
+
+* name rejoint le canal canal1.
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Changement de canal" enabled="true">
+          <stringProp name="TestPlan.comments">Inscription d&apos;un client au canal de diffusion des informations de Morix.</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_CHANGE_CANAL_CLIENT} place publique</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1265349261">* name quitte le canal canal1.</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="-834414166">* name rejoint le canal place publique.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Affichage des canaux" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_AFFICHE_CANAUX}</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="224688196">* Canaux disponibles :</stringProp>
+              <stringProp name="-692638382">- place publique (2)</stringProp>
+              <stringProp name="103808618">- canal1 (0)</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Création d&apos;un canal existant" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_AJOUTE_CANAL} canal1</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1055311061">* Le canal canal1 existe déjà.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Superssion d&apos;un canal existant" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_SUPPRIME_CANAL} canal1</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1454713412">* Le canal canal1 a été supprimé.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Superssion d&apos;un canal non existant" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_SUPPRIME_CANAL} canal1</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1530621263">* Le canal canal1 n&apos;existe pas.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Affichage client" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_AFFICHE_CLIENT}</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1873054711">* Informations personnelles : </stringProp>
+              <stringProp name="1764807211">   Surnom : name </stringProp>
+              <stringProp name="-1726921121">   Canal  : place publique </stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Changement de surnom" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_CHANGE_SURNOM_CLIENT} nom</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1224218858">* name devient nom.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="Requête TCP - Sortie du chat" enabled="true">
+          <stringProp name="TestPlan.comments">Test de décrément d&apos;une quantité d&apos;un produit non présent dans le stock (cf. variables prédéfinies)</stringProp>
+          <stringProp name="TCPSampler.server"></stringProp>
+          <boolProp name="TCPSampler.reUseConnection">true</boolProp>
+          <stringProp name="TCPSampler.port"></stringProp>
+          <boolProp name="TCPSampler.nodelay">false</boolProp>
+          <stringProp name="TCPSampler.timeout"></stringProp>
+          <stringProp name="TCPSampler.request">${COMMANDE_FERME_CHAT}</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion Réponse" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="721565079">* Sortie du chat.</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Arbre de résultats" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>true</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <threadCounts>true</threadCounts>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
